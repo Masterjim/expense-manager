@@ -38,11 +38,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:22.0'
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-security")
 
-    // Use JUnit test framework
     testCompile 'junit:junit:4.12'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
