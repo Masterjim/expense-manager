@@ -1,25 +1,15 @@
 package be.jeremy.manager.expense.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * @author Jeremy
  */
-public class Expense {
+public class Expense extends MoneyStream {
 
-    private final Account account;
-    private final BigDecimal amount;
-
-    public Expense(Account account, BigDecimal amount) {
-        this.account = account;
-        this.amount = amount;
+    public Expense(Account account, LocalDateTime date, BigDecimal amount) {
+        super(account, date, amount);
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
 }
