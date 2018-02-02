@@ -1,10 +1,11 @@
 package be.jeremy.manager.expense.repository;
 
 import be.jeremy.manager.expense.domain.Account;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 /**
  * @author Jeremy
@@ -12,11 +13,15 @@ import java.util.Map;
 @Repository
 public class AccountRepository {
 
-    public static Map<Long, Account> fakeRepository = new HashMap<Long, Account>(){{
-        put(1L, new Account(1L, "MyAccount", "This is my account"));
-    }};
+    @Autowired
+    private EntityManager entityManager;
 
     public Account getAccount(Long id) {
-        return fakeRepository.get(id);
+        return entityManager.find(Account.class, id);
+    }
+
+    @Transactional
+    public void save(Account account) {
+        entityManager.persist(account);
     }
 }

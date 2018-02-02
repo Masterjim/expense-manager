@@ -32,6 +32,10 @@ repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     mavenCentral()
+
+    maven {
+        url "http://m2.objectdb.com"
+    }
 }
 
 sourceCompatibility = 1.8
@@ -41,6 +45,13 @@ dependencies {
     compile 'com.google.guava:guava:22.0'
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa"){
+        exclude module: 'spring-boot-starter-jdbc' //by artifact name
+        exclude module: 'hibernate-entitymanager' //by artifact name
+    }
+    compile('com.objectdb:objectdb:2.7.4_02')
+//    compile('org.eclipse.persistence:javax.persistence:2.1.0')
+
 
     testCompile 'junit:junit:4.12'
     testCompile('org.springframework.boot:spring-boot-starter-test')
