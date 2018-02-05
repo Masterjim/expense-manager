@@ -20,6 +20,15 @@ public class ExpenseManagerApplication {
 
     @Bean
     public EntityManagerFactory entityManagerFactory() {
+    /* When we work with a C/S database system
+        Map<String, String> props = new HashMap<>();
+        props.put("javax.persistence.jdbc.user", "admin");
+        props.put("javax.persistence.jdbc.password", "admin");
+
+        return Persistence.createEntityManagerFactory("objectdb://localhost:6136/test.odb", props);
+    */
+
+        // When we work with an embedded database
         return Persistence.createEntityManagerFactory("test.odb");
     }
 
