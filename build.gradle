@@ -8,23 +8,36 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE')
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.17.2')
     }
 }
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-// Apply the spring-boot plugin
-apply plugin: 'org.springframework.boot'
-
-// Apply the application plugin to add support for building an application
-apply plugin: 'application'
 
 jar {
     baseName = 'expense-manager'
-    version =  '0.1.0'
+    version = '0.1.0'
+}
+// Apply the spring-boot plugin
+apply plugin: 'org.springframework.boot'
+// Apply the application plugin to add support for building an application
+apply plugin: 'application'
+// Apply the docker plugin
+apply plugin: 'com.palantir.docker'
+
+group = 'jeremy'
+
+docker {
+    name "${project.group}/${jar.baseName}"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
 }
 
 // In this section you declare where to find the dependencies of your project
