@@ -2,6 +2,9 @@
 ## Functional Requirements
 * Manage incomes
 * Manage expanses
+* Preview budget
+* Recurring amount
+
 ## Non-functional Requirements
 * Good maintainability
 * Rest API

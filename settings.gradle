@@ -16,3 +16,8 @@ include 'services:webservice'
 */
 
 rootProject.name = 'expense-manager'
+include 'cli-client'
+include 'domain'
+include 'persistence'
+include 'ws'
+
