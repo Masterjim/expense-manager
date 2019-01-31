@@ -9,6 +9,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compileOnly group: 'javax', name: 'javaee-api', version: '8.0'
+}
+
 lombok {
     version = '1.18.4'
     sha256 = ""
